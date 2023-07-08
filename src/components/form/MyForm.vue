@@ -9,7 +9,7 @@
       </select>
     </div>
 
-    <div :id="getItem['id']" class="edit-block">
+    <div class="edit-block">
       <h1>{{getItem['name']}}</h1>
       <input type="text" :value="getItem['value']">
     </div>
@@ -56,7 +56,7 @@
         const valueItem = editBlock.querySelector('input').value;
 
         arrayData.forEach(element => {
-          if(element['id'] === Number(editBlock['id'])){
+          if(element['id'] === Number(this.id) + 1){
             element['value'] = valueItem;
             axios.put(`https://data-form.onrender.com/data/${element['id']}`, { id: element['id'], name: element['name'], value: element['value'] });
           }
